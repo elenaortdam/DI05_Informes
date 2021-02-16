@@ -38,7 +38,7 @@ public class Ejercicio2 {
         Map<String, Object> params = new HashMap<>();
         params.put("ID_CLIENTE", 1);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jreport, params, MySQLConnection.getMySQLConnection());
-        String pdfName =System.currentTimeMillis()+ "informe.pdf";
+        String pdfName ="src/informes/" + System.currentTimeMillis()+ "informe2.pdf";
         JasperExportManager.exportReportToPdfFile(jasperPrint,pdfName);
         File path = new File(pdfName);
         Desktop.getDesktop().open(path);

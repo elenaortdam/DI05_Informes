@@ -35,7 +35,7 @@ public class Ejercicio3 {
         JasperCompileManager.compileReportToFile(jasperDesign, jasper.getAbsolutePath());
         JasperReport jreport = JasperCompileManager.compileReport(jasperDesign);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jreport, null, MySQLConnection.getMySQLConnection());
-        String pdfName =System.currentTimeMillis()+ "informe.pdf";
+        String pdfName ="src/informes/" + System.currentTimeMillis()+  "informe3.pdf";
         JasperExportManager.exportReportToPdfFile(jasperPrint,pdfName);
         File path = new File(pdfName);
         Desktop.getDesktop().open(path);

@@ -9,15 +9,12 @@ import utilities.MySQLConnection;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
@@ -38,7 +35,7 @@ public class Ejercicio4 {
         JasperReport jreport = JasperCompileManager.compileReport(jasperDesign);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jreport, null,
                 MySQLConnection.getMySQLConnection());
-        String pdfName =System.currentTimeMillis()+ "informe.pdf";
+        String pdfName ="src/informes/" + System.currentTimeMillis()+ "informe4.pdf";
         JasperExportManager.exportReportToPdfFile(jasperPrint,pdfName);
         File path = new File(pdfName);
         Desktop.getDesktop().open(path);
