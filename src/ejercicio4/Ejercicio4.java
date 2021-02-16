@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio1;
+package ejercicio4;
 
 import utilities.MySQLConnection;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
@@ -22,9 +25,9 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
  *
  * @author elena
  */
-public class Ejercicio1 {
+public class Ejercicio4 {
 
-    private String filePath = "src/ejercicio1/Ejercicio1";
+    private String filePath = "src/ejercicio4/Ejercicio4";
 
     public void ejecutar() throws JRException, IOException {
         File jrxml = new File(filePath + ".jrxml");
@@ -45,7 +48,7 @@ public class Ejercicio1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws JRException, IOException {
-        Ejercicio1 informe = new Ejercicio1();
+        Ejercicio4 informe = new Ejercicio4();
         informe.ejecutar();
     }
 

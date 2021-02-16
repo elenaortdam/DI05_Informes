@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio1;
+package ejercicio2;
 
 import utilities.MySQLConnection;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -22,9 +24,9 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
  *
  * @author elena
  */
-public class Ejercicio1 {
+public class Ejercicio2 {
 
-    private String filePath = "src/ejercicio1/Ejercicio1";
+    private String filePath = "src/ejercicio2/Ejercicio2";
 
     public void ejecutar() throws JRException, IOException {
         File jrxml = new File(filePath + ".jrxml");
@@ -33,8 +35,9 @@ public class Ejercicio1 {
         File jasper = new File(filePath + ".jasper");
         JasperCompileManager.compileReportToFile(jasperDesign, jasper.getAbsolutePath());
         JasperReport jreport = JasperCompileManager.compileReport(jasperDesign);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jreport, null,
-                MySQLConnection.getMySQLConnection());
+        Map<String, Object> params = new HashMap<>();
+        params.put("ID_CLIENTE", 1);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jreport, params, MySQLConnection.getMySQLConnection());
         String pdfName =System.currentTimeMillis()+ "informe.pdf";
         JasperExportManager.exportReportToPdfFile(jasperPrint,pdfName);
         File path = new File(pdfName);
@@ -45,7 +48,7 @@ public class Ejercicio1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws JRException, IOException {
-        Ejercicio1 informe = new Ejercicio1();
+        Ejercicio2 informe = new Ejercicio2();
         informe.ejecutar();
     }
 

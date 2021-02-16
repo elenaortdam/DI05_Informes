@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Ejercicio4_subreportclientes" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c50c2a7b-a568-43f8-8ec4-2337574b47af">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_CLIENTE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.*
+from clientes c
+         join pedidos p on c.ID_Cliente = p.ID_Cliente
+where p.ID_Cliente = $P{ID_CLIENTE}
+group by c.ID_Cliente;]]>
+	</queryString>
+	<field name="ID_Cliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Ciudad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="100" height="21" uuid="18881911-a24e-4e6f-ad7d-a8066033eb6a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="100" height="21" uuid="cfe574f7-bdf4-4544-96fb-53c1ec2dc9ca"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="70" width="100" height="22" uuid="e1e17590-e839-4902-8a19-4d121ceefe25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="21" uuid="5e04f593-c732-4a54-8656-4505be2fab6d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="30" width="100" height="20" uuid="1364207b-7f3d-4e9c-b336-afda98efbad7"/>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="51" width="100" height="20" uuid="e8c675a6-c632-4001-b1bd-8ec8a3a60f17"/>
+				<textFieldExpression><![CDATA[$F{Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="71" width="100" height="20" uuid="e18a5bd2-00db-4565-acac-59d3cfe56ddb"/>
+				<textFieldExpression><![CDATA[$F{Ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="11" width="100" height="20" uuid="7659cfb1-af5f-4744-828f-4b7c972be1a9"/>
+				<textFieldExpression><![CDATA[$F{ID_Cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
